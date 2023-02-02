@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Navbar from "@components/Navbar";
+import Card from "@components/Card";
+import Link from "next/link";
 
 const Home = () => {
   const [productList, setProductList] = useState<TProduct[]>([]);
@@ -8,7 +9,7 @@ const Home = () => {
     window
       .fetch("/api/avo")
       .then((response) => response.json())
-      .then(({ data, length }) => setProductList(data))
+      .then(({ data }) => setProductList(data))
       .catch((error) => console.error(error));
   }, []);
 
@@ -16,7 +17,15 @@ const Home = () => {
     <>
       <h1>Platzi</h1> 🥑 <h1>Avo</h1>
       {productList.map((product) => (
-        <div key={product.id}>{product.name}</div>
+        <Link href={`/products/${product.id}`}>
+          <Card 
+            key={product.id}
+            productName={product.name}
+            productPrice={product.price}
+            productImage={product.image}
+          />
+        </Link>
+
       ))}
     </>
   );
