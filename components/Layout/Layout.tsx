@@ -1,3 +1,4 @@
+import Footer from "@components/Footer";
 import React, { ReactNode } from "react";
 import Navbar from "../Navbar";
 
@@ -10,7 +11,7 @@ const Layout = ({ children }: Props) => {
     <div>
       <Navbar />
       {children}
-      <footer>This is the footer</footer>
+      <Footer />
     </div>
 
   );

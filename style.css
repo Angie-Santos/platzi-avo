@@ -9,13 +9,40 @@ html {
   font-size: 62.5%;
 }
 
+a {
+  text-decoration:none;
+}
+
+#principal-header{
+  width: 100%;
+  background-color: #b0da87;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 1rem;
+  color: rgba(50, 96, 58);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
 .logo {
-  width: 5rem;
+  width: 4rem;
+}
+
+.logo:nth-child(2) {
+  width: 8rem;
 }
 
 #header-products {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+  font-size: 2rem;
+  color: rgb(50, 96, 58);
 }
 
 #container-products {
@@ -24,12 +51,29 @@ html {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 7rem;
 }
 
-.product {
-  width: 100%;
+a:hover {
+  cursor: pointer;
 }
 
-.avo-image {
-  width: 20%;
+#container-products a {
+  min-width: 300px;
+  text-align: center;
+  width:25%;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;  
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(50, 96, 58,0.1);     
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color:rgb(50, 96, 58); 
+  border-radius: 20px;     
+  border: 3px solid rgb(219, 232, 226);
 }
