@@ -8,9 +8,9 @@ type Product = {
 
 const Card = ({ productName, productPrice, productImage }: Product) => {
   return (
-    <section>
+    <section className="product">
       <p>{productName}</p>
-      <img src={productImage} alt="avo" />
+      <img className='avo-image' src={productImage} alt="avo" />
       <p>Price: ${productPrice}</p>
     </section>
   );

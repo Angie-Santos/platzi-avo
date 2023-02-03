@@ -7,8 +7,8 @@ const Navbar = () => {
           <ul>
             <li>
               <Link className="links" href="/">
-                {" "}
-                🥑 Avo Store
+                <img className="logo" src="/images/avocado-icon.png" alt="logo" />
+                Avo Store
               </Link>
             </li>
           </ul>

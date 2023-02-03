@@ -15,18 +15,24 @@ const Home = () => {
 
   return (
     <>
-      <h1>Platzi</h1> 🥑 <h1>Avo</h1>
-      {productList.map((product) => (
-        <Link href={`/products/${product.id}`}>
-          <Card 
-            key={product.id}
-            productName={product.name}
-            productPrice={product.price}
-            productImage={product.image}
-          />
-        </Link>
+      <section id='header-products'>
+        <h1>Platzi</h1> 
+        <img className="logo" src="/images/avocado-icon.png" alt="logo" />
+        <h1>Avo</h1>
+      </section>
+      <section id='container-products'>
+        {productList.map((product) => (
+          <Link href={`/products/${product.id}`}>
+            <Card 
+              key={product.id}
+              productName={product.name}
+              productPrice={product.price}
+              productImage={product.image}
+            />
+          </Link>
 
-      ))}
+        ))}
+      </section>
     </>
   );
 };
