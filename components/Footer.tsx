@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -8,19 +9,19 @@ const Footer = () => {
           <div className="section">
             <p>Nosotros</p>
             <ul>
-              <li>Conoce más</li>
+              <li><Link href='/about'>Conoce más</Link></li>
             </ul>
           </div>
           <div className="section">
             <p>Servicios</p>
             <ul>
-              <li>Todos los productos</li>
+            <li><Link href='/'>Todos los productos</Link></li>
             </ul>
           </div>
           <div className="section">
             <p>Hecho para</p>
             <ul>
-              <li>Platzi y su curso de NextJS </li>
+              <li><a target="_blank" href="https://platzi.com/cursos/next/">Conoce más</a></li>
             </ul>
           </div>
         </div>
