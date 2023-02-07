@@ -1,4 +1,5 @@
 import React from "react";
+
 const avoFacts = [
   {
     title: "Most avocados come from Mexico",
@@ -88,7 +89,7 @@ const AboutPage = () => {
           color: grey;
         }
         ol {
-          width: 60%;
+          width: 90%;
           display:flex;
           flex-direction:row;
           flex-wrap: wrap;
@@ -106,6 +107,12 @@ const AboutPage = () => {
          
           margin-bottom: 2rem;
           font-size:2.5rem;
+        }
+
+        @media (min-width:1000px){
+          ol{
+            width:60%;
+          }
         }
       `}</style>
     </>
