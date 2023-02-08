@@ -10,6 +10,17 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  height: 100vh;
+}
+
+#__next > div{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 a {
   text-decoration:none;
 }

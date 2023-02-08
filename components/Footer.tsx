@@ -1,11 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import styled from 'styled-components'
-
-const RedLink = styled.a`
-   color:rgb(50, 96, 58);
-  font-weight:700;;
-`
 
 const Footer = () => {
   return (
@@ -15,13 +9,13 @@ const Footer = () => {
           <div className="section">
             <p className="sections">Nosotros</p>
             <ul>
-              <li><Link href='/about'><RedLink>Conoce más</RedLink></Link></li>
+              <li><Link href='/about'><span>Conoce más</span></Link></li>
             </ul>
           </div>
           <div className="section">
             <p className="sections">Servicios</p>
             <ul>
-              <li><Link className="link" href='/'><RedLink>Todos los productos</RedLink></Link></li>
+              <li><Link className="link" href='/'><span>Todos los productos</span></Link></li>
           </ul>
         </div>
         <div className="section">
@@ -74,7 +68,7 @@ const Footer = () => {
           list-style:none;
         }
 
-        a {
+        a, span {
           color:rgb(50, 96, 58);
           font-weight:700;
         }
@@ -90,7 +84,7 @@ const Footer = () => {
           margin-top:2rem;
         }
 
-        @media (min-width: 700px){
+        @media (min-width: 620px){
           #container-section {
             flex-direction:row;
             text-align:left;
