@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 
 const ProductIdDetails = () => {
   const router = useRouter();
   const { productId } = router.query;
   // const {query : {productId}} = useRouter();
   const [product, setProduct] = useState<TProduct>();
+  const [inputValue, setInputValue] = useState<number>();
+
 
   useEffect(() => {
     window
@@ -14,6 +16,16 @@ const ProductIdDetails = () => {
       .then((data) => setProduct(data))
       .catch((error) => console.error(error));
   }, [productId]);
+
+  const handleCartButton = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    
+  };
+
+  const handleInputValue = (event: { target: { value: any } }) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <section>
       <div id="container">
@@ -25,8 +37,17 @@ const ProductIdDetails = () => {
               <p id="price">Price: {product?.price}</p>
               <p id="sku">SKU: {product?.sku}</p>
               <form id="input">
-                <input type="number" name="" id="" min={1} max={10} required/>
-                <button type="submit">Add to cart</button>
+                <input
+                  type="number"
+                  value={inputValue}
+                  onChange={handleInputValue}
+                  min={1}
+                  max={10}
+                  required
+                />
+                <button type="submit" onClick={handleCartButton}>
+                  Add to cart
+                </button>
               </form>
             </div>
           </>
@@ -39,10 +60,8 @@ const ProductIdDetails = () => {
           <div>
             <table>
               <thead>
-                <tr >
-                  <th colSpan={2}>
-                      Attributes
-                  </th>
+                <tr>
+                  <th colSpan={2}>Attributes</th>
                 </tr>
               </thead>
               <tbody>
