@@ -1,5 +1,6 @@
+import { CartContext } from "context/ContxtProvider";
 import { useRouter } from "next/router";
-import {  useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const ProductIdDetails = () => {
   const router = useRouter();
@@ -7,7 +8,7 @@ const ProductIdDetails = () => {
   // const {query : {productId}} = useRouter();
   const [product, setProduct] = useState<TProduct>();
   const [inputValue, setInputValue] = useState<number>();
-
+  const { cartProduct, setCartProduct } = useContext<any>(CartContext);
 
   useEffect(() => {
     window
@@ -19,7 +20,7 @@ const ProductIdDetails = () => {
 
   const handleCartButton = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    
+    setCartProduct([...cartProduct, { product: product, input: inputValue }]);
   };
 
   const handleInputValue = (event: { target: { value: any } }) => {
@@ -36,16 +37,16 @@ const ProductIdDetails = () => {
               <h2>{product?.name}</h2>
               <p id="price">Price: {product?.price}</p>
               <p id="sku">SKU: {product?.sku}</p>
-              <form id="input">
+              <form id="input" onSubmit={handleCartButton}>
                 <input
                   type="number"
-                  value={inputValue}
+                  value={inputValue || ''}
                   onChange={handleInputValue}
                   min={1}
                   max={10}
                   required
                 />
-                <button type="submit" onClick={handleCartButton}>
+                <button type="submit">
                   Add to cart
                 </button>
               </form>

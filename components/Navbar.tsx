@@ -1,6 +1,10 @@
+import { CartContext } from "context/ContxtProvider";
 import Link from "next/link";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const {cartProduct, setCartProduct } = useContext<any>(CartContext);
+  console.log(cartProduct)
   return (
     <>
       <nav id="principal-header">
@@ -9,11 +13,11 @@ const Navbar = () => {
             <Link id="navbar" href="/">
               <img className="logo" src="/images/avocado-icon.png" alt="logo" />
               Avo Store
-            </Link>
+            </Link> 
           </li>
           <li>
             <Link id="cart" href="/cart">
-              <span><span id='basket'>🧺</span>{0}</span>
+              <span><span id='basket'>🧺</span>{cartProduct.reduce((prev: any, curr: any) => parseInt(prev) + parseInt(curr.input), 0)}</span>
             </Link>
           </li>
         </ul>

@@ -1,4 +1,5 @@
 import Footer from "@components/Footer";
+import { ContxtProvider } from "context/ContxtProvider";
 import React, { ReactNode } from "react";
 import Navbar from "../Navbar";
 
@@ -9,11 +10,12 @@ interface Props {
 const Layout = ({ children }: Props) => {
   return (
     <div>
-      <Navbar />
-      {children}
-      <Footer />
+      <ContxtProvider>
+        <Navbar />
+        {children}
+        <Footer />
+      </ContxtProvider>
     </div>
-
   );
 };
 
