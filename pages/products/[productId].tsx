@@ -20,7 +20,28 @@ const ProductIdDetails = () => {
 
   const handleCartButton = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    setCartProduct([...cartProduct, { product: product, input: inputValue }]);
+    if (cartProduct.length > 0) {
+      const existingProduct = cartProduct.find(
+        (p: any) => p.product.name === product?.name
+      );
+      if (existingProduct) {
+        const updateProduct = {
+          ...existingProduct,
+          input: parseInt(existingProduct.input) + parseInt(inputValue as any),
+        };
+        setCartProduct(
+          cartProduct.map((element: any) =>
+            element.product.name === product?.name
+              ? updateProduct
+              : element
+          )
+        );
+      } else{
+        setCartProduct([...cartProduct, { product: product, input: inputValue }])
+      }
+    } else {
+      setCartProduct([...cartProduct, { product: product, input: inputValue }]);
+    }
   };
 
   const handleInputValue = (event: { target: { value: any } }) => {
@@ -40,15 +61,13 @@ const ProductIdDetails = () => {
               <form id="input" onSubmit={handleCartButton}>
                 <input
                   type="number"
-                  value={inputValue || ''}
+                  value={inputValue || ""}
                   onChange={handleInputValue}
                   min={1}
                   max={10}
                   required
                 />
-                <button type="submit">
-                  Add to cart
-                </button>
+                <button type="submit">Add to cart</button>
               </form>
             </div>
           </>
