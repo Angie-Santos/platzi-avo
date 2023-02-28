@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <>
       <section id="main">
-        <section>
+        <section id='cart'>
           <h2>Cart</h2>
           {cartProduct.map((elm: any) => {
             if (elm.input > 0) {
@@ -112,6 +112,36 @@ const Cart = () => {
           padding: 1rem;
           border-radius: 0.5rem;
           cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+          #cart{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          #empty{
+            width:75%;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          #total{
+            width:75%;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          #text {
+            padding-top: 0;
+            width: 80%;
+          }
+          p{
+            margin:1rem;
+          }
         }
       `}</style>
     </>
