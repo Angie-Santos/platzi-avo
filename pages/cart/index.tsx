@@ -8,7 +8,9 @@ const Cart = () => {
     <>
       <section>
         {cartProduct.map((elm: any) => {
-          return <CartProduct key={elm.product.id} cartProduct={elm} />;
+          if(elm.input > 0 ){
+            return <CartProduct key={elm.product.id} elemProduct={elm}/>;
+          }
         })}
       </section>
       {cartProduct.reduce(
@@ -23,7 +25,7 @@ const Cart = () => {
         </section>
       )}
       <section>
-        <p>Subtotal {0} </p>
+        <p>Total {0} </p>
         <button>Check out</button>
       </section>
     </>

@@ -1,17 +1,41 @@
-import React from 'react'
+import { CartContext } from "context/ContxtProvider";
+import React, { useContext } from "react";
 
-const CartProduct = ({cartProduct}:any) => {
+const CartProduct = ({ elemProduct }: any) => {
+  const { cartProduct, setCartProduct } = useContext<any>(CartContext);
+  const handleDeleteButton = () => {
+
+    const updateProduct = {
+      ...elemProduct,
+      input: parseInt(elemProduct.input) -1
+    };
+    setCartProduct(
+      cartProduct.map((element: any) =>
+        element.product.name === elemProduct?.product.name
+          ? updateProduct
+          : element
+      )
+    );
+    console.log(cartProduct);
+  };
+
   return (
-    <>
-      <img src={cartProduct.product.image}/>
-      <p>Name: {cartProduct.product.name}</p>
-      <p>SKU {cartProduct.product.sku}</p>
-      <p>Price: {cartProduct.product.price}</p>
-      <p>und: {cartProduct.input}</p>
-    </>
-  
+    <div>
+      <img src={elemProduct.product.image} />
+      <div>
+        <p>Name: {elemProduct.product.name}</p>
+        <p>Price: {elemProduct.product.price}</p>
+        <p>und: {elemProduct.input}</p>
+      </div>
+      <button onClick={handleDeleteButton}>🗑️</button>
 
-  )
-}
+      <style jsx>{`
+        img {
+          width: 10%;
+        }
+      `}</style>
+    </div>
+  );
+};
 
-export default CartProduct
+export default CartProduct;
