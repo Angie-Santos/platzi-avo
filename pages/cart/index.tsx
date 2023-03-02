@@ -38,7 +38,11 @@ const Cart = () => {
               0
             )).toFixed(2)}{" "}
           </p>
-          <button>Check out</button>
+          <button disabled={(cartProduct.reduce(
+              (acc: any, act: any) =>
+                acc + parseInt(act?.input) * act.product.price,
+              0
+            )) === 0 ? true : false}>Check out</button>
         </section>
       </section>
 
@@ -114,6 +118,10 @@ const Cart = () => {
           cursor: pointer;
         }
 
+        button:disabled{
+          background-color:gray;
+          cursor:default;
+        }
         @media (max-width: 1000px) {
           #cart{
             display:flex;
@@ -142,6 +150,8 @@ const Cart = () => {
           p{
             margin:1rem;
           }
+
+       
         }
       `}</style>
     </>
