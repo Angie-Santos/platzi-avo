@@ -1,23 +1,38 @@
 import { CartContext } from "context/ContxtProvider";
 import Link from "next/link";
 import React, { useContext } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const CartProduct = ({ elemProduct }: any) => {
   const { cartProduct, setCartProduct } = useContext<any>(CartContext);
   const handleDeleteButton = () => {
-    const updateProduct = {
-      ...elemProduct,
-      input: parseInt(elemProduct.input) - 1,
-    };
+    MySwal.fire({
+      title: "¿Deseas eliminar un producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, borralo!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Eliminado con éxito!");
+        const updateProduct = {
+          ...elemProduct,
+          input: parseInt(elemProduct.input) - 1,
+        };
 
-    setCartProduct(
-      cartProduct.map((element: any) =>
-        element.product.name === elemProduct?.product.name
-          ? updateProduct
-          : element
-      )
-    );
-    console.log(cartProduct);
+        setCartProduct(
+          cartProduct.map((element: any) =>
+            element.product.name === elemProduct?.product.name
+              ? updateProduct
+              : element
+          )
+        );
+      }
+    });
   };
 
   return (
@@ -88,8 +103,8 @@ const CartProduct = ({ elemProduct }: any) => {
             padding-top: 0;
             width: 80%;
           }
-          p{
-            margin:1rem;
+          p {
+            margin: 1rem;
           }
         }
       `}</style>

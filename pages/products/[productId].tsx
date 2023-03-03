@@ -1,7 +1,10 @@
 import { CartContext } from "context/ContxtProvider";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const MySwal = withReactContent(Swal)
 const ProductIdDetails = () => {
   const router = useRouter();
   const { productId } = router.query;
@@ -19,6 +22,13 @@ const ProductIdDetails = () => {
   }, [productId]);
 
   const handleCartButton = (event: { preventDefault: () => void }) => {
+    MySwal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Producto agregado',
+      showConfirmButton: false,
+      timer: 1500
+    })
     event.preventDefault();
     if (cartProduct.length > 0) {
       const existingProduct = cartProduct.find(
