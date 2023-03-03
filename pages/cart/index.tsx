@@ -1,14 +1,24 @@
 import CartProduct from "@components/CartProduct";
+import Modal from "@components/Modal";
 import { CartContext } from "context/ContxtProvider";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 const Cart = () => {
   const { cartProduct } = useContext<any>(CartContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
       <section id="main">
-        <section id='cart'>
+        <section id="cart">
           <h2>Cart</h2>
           {cartProduct.map((elm: any) => {
             if (elm.input > 0) {
@@ -32,18 +42,33 @@ const Cart = () => {
         <section id="total">
           <p>
             <span>Total: </span>$
-            {(cartProduct.reduce(
-              (acc: any, act: any) =>
-                acc + parseInt(act?.input) * act.product.price,
-              0
-            )).toFixed(2)}{" "}
+            {cartProduct
+              .reduce(
+                (acc: any, act: any) =>
+                  acc + parseInt(act?.input) * act.product.price,
+                0
+              )
+              .toFixed(2)}{" "}
           </p>
-          <button disabled={(cartProduct.reduce(
-              (acc: any, act: any) =>
-                acc + parseInt(act?.input) * act.product.price,
-              0
-            )) === 0 ? true : false}>Check out</button>
+          <button
+            disabled={
+              cartProduct.reduce(
+                (acc: any, act: any) =>
+                  acc + parseInt(act?.input) * act.product.price,
+                0
+              ) === 0
+                ? true
+                : false
+            }
+            onClick={handleOpenModal}
+          >
+            Check out
+          </button>
         </section>
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+          <h2>El proceso de compra ha sido completado!*</h2>
+          <p>* La compra es ficticia</p>
+        </Modal>
       </section>
 
       <style jsx>{`
@@ -63,30 +88,30 @@ const Cart = () => {
 
         #total {
           border: 0.1rem lightgray solid;
-          padding:2rem;
-          border-radius:0.5rem;
+          padding: 2rem;
+          border-radius: 0.5rem;
           display: flex;
           width: 35%;
           justify-content: space-between;
           align-items: center;
         }
 
-        #empty{
+        #empty {
           border: 0.1px #ffeee9 solid;
-          padding:2rem;
-          border-radius:0.5rem;
+          padding: 2rem;
+          border-radius: 0.5rem;
           display: flex;
-          flex-direction:column;
-          font-size:1.6rem;
-          text-align:center;
-          background-color:#fffaf3;
+          flex-direction: column;
+          font-size: 1.6rem;
+          text-align: center;
+          background-color: #fffaf3;
           width: 35%;
           justify-content: space-between;
           align-items: center;
-          color:#573a08;
-          margin-bottom:2rem;
+          color: #573a08;
+          margin-bottom: 2rem;
         }
-        h4{
+        h4 {
         }
 
         #total p {
@@ -118,27 +143,27 @@ const Cart = () => {
           cursor: pointer;
         }
 
-        button:disabled{
-          background-color:gray;
-          cursor:default;
+        button:disabled {
+          background-color: gray;
+          cursor: default;
         }
         @media (max-width: 1000px) {
-          #cart{
-            display:flex;
+          #cart {
+            display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
           }
-          #empty{
-            width:75%;
-            display:flex;
+          #empty {
+            width: 75%;
+            display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
           }
-          #total{
-            width:75%;
-            display:flex;
+          #total {
+            width: 75%;
+            display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
@@ -147,11 +172,9 @@ const Cart = () => {
             padding-top: 0;
             width: 80%;
           }
-          p{
-            margin:1rem;
+          p {
+            margin: 1rem;
           }
-
-       
         }
       `}</style>
     </>

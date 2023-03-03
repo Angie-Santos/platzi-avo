@@ -1,19 +1,38 @@
 import { useEffect, useState } from "react";
 import Card from "@components/Card";
 import Link from "next/link";
+import Modal from "@components/Modal";
 
 const Home = () => {
   const [productList, setProductList] = useState<TProduct[]>([]);
   const [counter, setCounter] = useState(0);
   const [killAvo, setKillAvo] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenRevival, setIsModalOpenRevival] = useState(false);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleOpenModalRevival = () => {
+    setIsModalOpenRevival(true);
+  };
+
+  const handleCloseModalRevival = () => {
+    setIsModalOpenRevival(false);
+  };
   const handleClick = () => {
     setCounter(counter + 1);
+    counter === 3 ? handleOpenModal() : counter;
     if (counter > 2 && counter < 6) {
       setKillAvo(true);
     } else if (counter === 6) {
       setCounter(0);
       setKillAvo(false);
+      handleOpenModalRevival();
     }
   };
 
@@ -39,6 +58,14 @@ const Home = () => {
           alt="logo"
           onClick={handleClick}
         />
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+          <h2>La curiosidad mató al aguacate!</h2>
+          <p>Intenta revivirlo 😈</p>
+        </Modal>
+        <Modal isOpen={isModalOpenRevival} onClose={handleCloseModalRevival}>
+          <h2>Esta vivooo, vivoooooo!</h2>
+          <p>Buen trabajo 😇</p>
+        </Modal>
         <h1>Avo</h1>
       </section>
       <section id="container-products">
