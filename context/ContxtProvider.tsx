@@ -6,7 +6,7 @@ import React, { createContext, ReactNode, useState } from 'react'
 interface Props {
   children: ReactNode;
 }
-export const CartContext = createContext();
+export const CartContext = createContext({});
 
 export const ContxtProvider = ({children}:Props) => {
   const [cartProduct, setCartProduct] = useState<any>([])
