@@ -144,8 +144,9 @@ const ProductIdDetails = () => {
         #sku {
           background-color:rgb(200,200,200);
           color:rgb(17,17,17);
+          margin-top:0.5rem;
           font-size:1.2rem;
-          padding: 0.5rem 2rem;
+          padding: 0.5rem 1rem;
           width:fit-content;
           border-radius:0.5rem;
         }
@@ -154,12 +155,16 @@ const ProductIdDetails = () => {
           border:rgb(200,200,200) solid 0.01rem;
           padding: 1rem;
           width:100px;
+          margin-right:2rem;
           outline:none;
           border-radius:0.5rem;
-          margin-right:2rem;
+          height:3rem;
         }
 
         #input button{
+          display:flex;
+          justify-content:center;
+          align-items:center;
           background-color:rgb(33,186,69);
           color:white;
           font-weight: 700;
@@ -167,6 +172,11 @@ const ProductIdDetails = () => {
           padding: 1rem;
           border-radius:0.5rem;
           cursor:pointer;
+          height:3rem;
+        }
+        #input{
+          margin-top:1rem;
+          display: flex;
         }
 
         #input button:hover{

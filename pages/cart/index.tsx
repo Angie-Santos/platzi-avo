@@ -79,6 +79,7 @@ const Cart = () => {
           padding-top: 3rem;
           flex-direction: column;
           align-items: center;
+          margin-bottom:5rem;
         }
         h2 {
           text-align: center;

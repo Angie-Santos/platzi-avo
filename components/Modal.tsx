@@ -44,6 +44,7 @@ const Modal = ({ isOpen, onClose, children }: any) => {
             padding: 16px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             width: 400px;
+            margin:1rem;
           }
           
           .closeButton {
@@ -58,6 +59,7 @@ const Modal = ({ isOpen, onClose, children }: any) => {
           
           .content {
             margin-top: 16px;
+            gap:1rem;
           }
           
           `
