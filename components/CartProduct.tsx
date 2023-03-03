@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { CartContext } from "context/ContxtProvider";
 import Link from "next/link";
 import React, { useContext } from "react";
@@ -37,7 +38,7 @@ const CartProduct = ({ elemProduct }: any) => {
 
   return (
     <div id="container">
-      <img src={elemProduct.product.image} />
+      <img src={elemProduct.product.image} alt='avocado'/>
       <div id="text">
         <Link href={`products/${elemProduct.product.id}`}>
           {" "}

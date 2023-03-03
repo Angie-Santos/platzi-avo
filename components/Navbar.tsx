@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { CartContext } from "context/ContxtProvider";
 import Link from "next/link";
 import { useContext, useEffect } from "react";

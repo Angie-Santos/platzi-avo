@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import Card from "@components/Card";
 import Link from "next/link";
 import Modal from "@components/Modal";
+
 
 const Home = () => {
   const [productList, setProductList] = useState<TProduct[]>([]);
