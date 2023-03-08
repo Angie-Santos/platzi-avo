@@ -1,7 +1,7 @@
 # 🥑 Platzi Avo - Proyecto Curso de Next.JS de Platzi
 
 Proyecto creado como parte del curso de NextJs y Platzi
-visita [aquí](platzi-k1oi8xcna-angie-santos.vercel.app)
+visita [aquí](https://platzi-avo-delta.vercel.app/)
 
 ### Logros
 
